@@ -1,60 +1,47 @@
 ## Code book of Data Set resultado.txt product of R script run_analysis.R
 
-### Background and Complementary Information
+### Background 
 
-The resultado dataset is obtained from the UCI HAR Data Set (see README.md for source and license information).
+The resultado dataset is obtained from the UCI HAR Data Set 
+(see README.md for source and license information).
 
-The remainder of this document we will refer to the UCI HAR dataset as the Samsung data set.
-
-Users of newdataset should first read the Samsung data set documentation to familiarize 
-themselves with the experimental study design, and the measurement, computation and data
-structuring of the Samsung data from which newdataset derives.
+It is highly recommnended that before you continue to read this code book, yo read the 
+documentation of the experiment that produced the data that is the input to the project
+of the course. The documentation is available in:
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
 resultado.txt dataset was made by the following steps:
 
-Merging the Samsung training and the test sets to create one data set. 
-The Samsung training and test sets are fully consistent, they simply differ on the levels 
-recorded for variable 'subject', as the experiment subjects were randomly divided into two groups, 
-and performed the same activities.
-Extracting only the measurements on the mean and standard deviation of each Samsung measurement 
-into and intermediate data set.
-Replacing the intermediate levels of factor variable 'activity' with descriptive activity names.
-Labelling the intermediate variables with descriptive names.
-Averaging each intermediate variable for each activity and each person (subject).
-Saving and documenting the resulting tidy data set as this newdataset.
-Variables
+1. Joining the datasets obtained from the training and the test subjects. 
 
-Measured variables of the Samsung experiment were summarized into averages of means and 
-standard deviations of the measurements. Thus newdataset variables are continuous, numeric values 
-(no associated unit of measurement). Two additional newdataset ordinal variables (subject id, activity)
- identify the subjects and the activities that they were requested to perform for the Samsung experiment.
+2. Extracting, according to the project instructions, the measurements on the mean and 
+standard deviation. 
 
-The tidy newdataset file, newdataset.txt, includes all values of all variables. 
-You can read the file into R efficiently with:
+3. Replacing the encoded activities (files: y_train.txt and y_test.txt) by their names (features file):
+"LAYING!, "SITTING", "STANDING", "WALKING", "WALKING UPSTAIRS", "WALKING DOWNSTAIRS".
 
-  read.table(newdataset.txt, comment.char="", header=TRUE)
-The variable (column) names of newdataset are very long, average length = 66.7, in an attempt to make 
-them self-describing (per project instructions). If you need to do extensive computation work with 
-newdataset you may want to shorten the names.
+4. Computing mean for each activity and each person (subject).
 
-There are no 'NA' values in newdataset.
+5. Loading as a text file created with write.table() using row.name=FALSE, according to project 
+instructions. This file is named: resultado.txt
 
-Reproducibility
+### Variables names and description
 
-You can reproduce newdataset from the Samsung data set by running script run_analysis.R. 
-See file README.md for further information. See also file output.of.run_analysis.txt for a trace 
-of the most recent run of the R script file. Both run_analysis.R and output.of.run_analysis.txt 
-display instructions on how to run the script.
+The tidy resultado.txt file, has six rows (one for each activity) for every subject participating
+in the experinment (30 subjects).
+ 
+The file resulado.txt can be read into R using 
+read.table("resultado.txt", header = TRUE)
 
-Data Set Card
+Exceptionally, in this case, you don't have to worry for 'NA' values 
+
+Data Set resultado description
 
 Name: resultado
 Created by: run_analysis.R on Friday Augost 21 2015
 Codebook: codebook.md
-ReadMe: README.md (this file)
-File: ./newdataset.txt
-Table size: 180 by 81
-Variables
+
+#### Variables names
 
 1: "subject"
 2: "activity"
@@ -138,15 +125,24 @@ Variables
 80:"mean.by.activity:fBodyBody.gyroscope.magnitude-std()" 
 81:"mean.by.activity:fBodyBody.gyroscopeJerk.magnitude-std()"
 
-
-Variable 'activity' with levels: Laying, Sitting, Standing, Walking, Walking Downstairs, Walking Upstairs.
+The "t" and "f" at the beginning of the original name, after the prefix "mean.by.activity" stands for 
+"t" to denote time anf "f" indicate frequency domain signals.
 
 Samsung Data Set Source
 
 Input data from zip file 'UCI HAR Dataset.zip' downloaded from the UCI Machine Learning Repository
-http://archive.ics.uci.edu/ml/machine-learning-databases/00240/ on Thu Sep 11 21:03:40 2014.
+http://archive.ics.uci.edu/ml/machine-learning-databases/00240/
+Date downloaded 17-08-2015
 
-License
+### License
 
-This data set is distributed AS-IS and no responsibility implied or explicit can be addressed to 
-the authors or their institutions for its use or misuse. Any commercial use is prohibited.
+Use of this dataset in publications must be acknowledged by referencing the following publication [1] 
+
+[1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity 
+Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International 
+Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
+
+This dataset is distributed AS-IS and no responsibility implied or explicit can be addressed to the 
+authors or their institutions for its use or misuse. Any commercial use is prohibited.
+
+Jorge L. Reyes-Ortiz, Alessandro Ghio, Luca Oneto, Davide Anguita. November 2012.
