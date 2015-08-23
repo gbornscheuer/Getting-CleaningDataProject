@@ -8,9 +8,11 @@ The files included in this repository and its contents are:
 ## Files
 
 	* README.md: is this file that you area reading
-	* run_analysis.R: is the R script that processes the datasets of the HAR using smartphones Data Set according to course instructions
+	* run_analysis.R: is the R script that processes the datasets of the HAR using smartphones 
+	  Data Set according to course instructions
 	* codebook.md: is the code book of the produced dataset according to course instructions
-	* resultado.txt: is the "second, independent tidy data set with th average of each variable for each activity and each subject"
+	* resultado.txt: is the "second, independent tidy data set with th average of each variable 
+	  for each activity and each subject" This file can be read with read.table("path and file name", header = TRUE)
 
 ## File: run_analysis.R 
 
