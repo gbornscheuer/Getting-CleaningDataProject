@@ -4,10 +4,11 @@
 # Name of the source code: run_analysis.R
 #
 # The comments included here explains this code. Extra documentation can be found in the files:
-## - 
-## - 
-## - 
+## - README.md: is the repo 
+## - codebook.md
+## - resultado.txt
 #
+# dplyr package must be loaded
 # First the data needed is read:
 #				1: vars: stores the variables (features)
 #				2: test: stores test group data (30% of the volunteers)
